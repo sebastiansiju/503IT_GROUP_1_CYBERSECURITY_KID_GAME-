@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Phish Hunt: Spot the Scam!</title>
+
+  <link rel="stylesheet" href="prototype-v1.css">
+</head>
+
+<body>
+
+  <!-- ================= WELCOME PAGE ================= -->
+
+  <div id="welcome-page" class="container">
+
+    <div class="phase">
+      PHASE 1 - GAME START
+    </div>
+
+    <div class="logo">
+      🎣
+    </div>
+
+    <h1>Phish Hunt</h1>
+
+    <h2>Spot the Scam!</h2>
+
+    <div class="info-box">
+
+      <p>Test your skills at spotting phishing scams! 🕵️</p>
+
+      <ul>
+        <li>✓ 20 scenarios to identify</li>
+        <li>✓ 10 seconds per round</li>
+        <li>✓ +5 points for correct answers</li>
+        <li>✓ Learn about red flags</li>
+      </ul>
+
+    </div>
+
+    <div class="button-group">
+
+      <button class="start-btn" onclick="startGame()">
+        Start Fishing! 🎣
+      </button>
+
+      <button class="how-btn" onclick="showInstructions()">
+        How To Play ❓
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= INSTRUCTIONS POPUP ================= -->
+
+  <div id="popup" class="popup">
+
+    <div class="popup-content">
+
+      <h2>Game Instructions</h2>
+
+      <ol>
+        <li>Read each message carefully.</li>
+        <li>Choose SAFE or SCAM.</li>
+        <li>You only have 10 seconds.</li>
+        <li>Earn 5 points for correct answers.</li>
+        <li>Complete all 20 scenarios.</li>
+      </ol>
+
+      <button class="close-btn" onclick="hideInstructions()">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= QUESTION PAGE ================= -->
+
+  <div id="question-page" class="question-page" style="display:none;">
+
+    <div class="top-bar">
+
+      <div>
+        🎯 Round 1/20
+      </div>
+
+      <div>
+        🏆 0
+      </div>
+
+    </div>
+
+    <div class="timer">
+      ⏰ 10s
+    </div>
+
+    <div class="question-box">
+
+      <h2>Email from "PayPal Security"</h2>
+
+      <p>
+        URGENT: Your account will be suspended in 24 hours!
+        Click here immediately to verify your identity:
+        paypa1-secure.com/verify
+      </p>
+
+    </div>
+
+    <div class="answer-buttons">
+
+      <button class="safe-btn" onclick="showWrong()">
+        ✓ SAFE
+      </button>
+
+      <button class="scam-btn" onclick="showCorrect()">
+        ⚠ SCAM
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= CORRECT PAGE ================= -->
+
+  <div id="correct-page" class="result-page" style="display:none;">
+
+    <div class="message-box success">
+
+      <div class="emoji">🎉</div>
+
+      <h1>Correct!</h1>
+
+      <p>This message is a SCAM</p>
+
+    </div>
+
+    <div class="middle-text">
+      🎣🐟 <br>
+      You caught the phisher!
+    </div>
+
+    <div class="red-flags">
+
+      <h2>🚩 Red Flags:</h2>
+
+      <ul>
+        <li>Creates false urgency with "24 hours"</li>
+        <li>Suspicious URL spelling</li>
+        <li>Demands immediate action</li>
+        <li>Threatens account suspension</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- ================= WRONG PAGE ================= -->
+
+  <div id="wrong-page" class="result-page" style="display:none;">
+
+    <div class="message-box wrong">
+
+      <div class="emoji">😞</div>
+
+      <h1>Not Quite!</h1>
+
+      <p>This message is a SCAM</p>
+
+    </div>
+
+    <div class="middle-text">
+      🐟💨 <br>
+      The fish got away!
+    </div>
+
+    <div class="red-flags">
+
+      <h2>🚩 Red Flags:</h2>
+
+      <ul>
+        <li>Creates false urgency</li>
+        <li>Suspicious verification link</li>
+        <li>Fake website spelling</li>
+        <li>Urgent warning message</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- ================= TIMEOUT PAGE ================= -->
+
+  <div id="timeout-page" class="result-page" style="display:none;">
+
+    <div class="message-box timeout">
+
+      <div class="emoji">⏰</div>
+
+      <h1>Time's Up!</h1>
+
+      <p>Try again and make your choice faster!</p>
+
+    </div>
+
+    <button class="retry-btn">
+      Try Again! ⏱️
+    </button>
+
+  </div>
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    function showInstructions(){
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function hideInstructions(){
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function startGame(){
+
+      document.getElementById("welcome-page").style.display = "none";
+
+      document.getElementById("question-page").style.display = "block";
+
+      setTimeout(showTimeout,10000);
+    }
+
+    function showCorrect(){
+
+      document.getElementById("question-page").style.display = "none";
+
+      document.getElementById("correct-page").style.display = "block";
+    }
+
+    function showWrong(){
+
+      document.getElementById("question-page").style.display = "none";
+
+      document.getElementById("wrong-page").style.display = "block";
+    }
+
+    function showTimeout(){
+
+      if(document.getElementById("question-page").style.display=="block"){
+
+        document.getElementById("question-page").style.display = "none";
+
+        document.getElementById("timeout-page").style.display = "block";
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
