@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phish Hunt: Spot the Scam</title>
+    <link rel="stylesheet" href="prototype-v1.css">
+</head>
+<body>
+ 
+ <!-- MAIN CARD -->
+  <div class="container">
+
+    <!-- PHASE -->
+    <div class="phase">
+      PHASE 1 - GAME START
+    </div>
+
+    <!-- LOGO -->
+    <div class="logo">
+      🐟
+    </div>
+
+    <!-- TITLE -->
+    <h1>🎣 Phish Hunt</h1>
+
+    <h2>Spot the Scam!</h2>
+
+    <!-- INFO BOX -->
+    <div class="info-box">
+
+      <p>Test your skills at spotting phishing scams! 🕵️</p>
+
+      <ul>
+        <li>✓ 20 scenarios to identify</li>
+        <li>✓ 10 seconds per round</li>
+        <li>✓ +5 points for correct answers</li>
+        <li>✓ Learn about red flags</li>
+      </ul>
+
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="button-group">
+
+      <button class="start-btn">
+        Start Fishing! 🎣
+      </button>
+
+      <button class="how-btn" onclick="showInstructions()">
+        How To Play ❓
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- POPUP -->
+  <div id="popup" class="popup">
+
+    <div class="popup-content">
+
+      <h2>Game Instructions</h2>
+
+      <ol>
+        <li>Read each email or message carefully.</li>
+        <li>Look for suspicious links and spelling mistakes.</li>
+        <li>Decide if the message is SAFE or a SCAM.</li>
+        <li>You only have 10 seconds for each round.</li>
+        <li>Earn points for correct answers.</li>
+        <li>if the timer runs out, you lose points. Try again! </li>
+        <li>Try to get the highest score and become a Phish Hunter! 🏆</li>
+
+      </ol>
+
+      <button class="close-btn" onclick="hideInstructions()">
+        Close
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    function showInstructions(){
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function hideInstructions(){
+      document.getElementById("popup").style.display = "none";
+    }
+
+  </script>
+
+</body>
+</html>
